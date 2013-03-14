@@ -1,0 +1,12 @@
+{
+  "name": "markblock",
+  "version": "0.0.0",
+  "description": "markdown in comments to html or whatever",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "Josh Perez <josh@goatslacker.com>",
+  "license": "MIT"
+}
