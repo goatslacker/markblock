@@ -1,12 +1,13 @@
 {
   "name": "markblock",
   "version": "0.0.0",
-  "description": "markdown in comments to html or whatever",
+  "description": "markdown in comments to ast or html or whatever",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "dependencies": {
+    "esprima": "*",
+    "coffee-script": "*"
   },
-  "repository": "",
+  "repository": "git://github.com/goatslacker/markblock",
   "author": "Josh Perez <josh@goatslacker.com>",
   "license": "MIT"
 }
