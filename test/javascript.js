@@ -12,11 +12,10 @@ function foo() {
 var bar = 2
 
 /**
- *
- * # more multi-line comments
- *
- * 1. list
- * 2. item 2
+ # more multi-line comments
+
+ 1. list
+ 2. item 2
  */
 
 function baz() { return 4 }

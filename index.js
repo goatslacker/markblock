@@ -1,22 +1,28 @@
+var css_parser = require('./css-parser')
 var fs = require('fs')
+var js_parser = require('./js-parser')
 var marked = require('marked')
-var esprima = require('esprima')
 
+var isJS = function (f) { return /\.js$/.test(f) }
+var isCS = function (f) { return /\.coffee$/.test(f) }
+var isCSS = function (f) { return /\.css$/.test(f) }
 
-var code = fs.readFileSync('./testcode.js').toString()
+function ast(file) {
+  var code = fs.readFileSync(file).toString()
+  var comments = null
 
-var comments = []
+  if (isJS(file)) {
+    comments = js_parser(code)
+  } else if (isCSS(file)) {
+    comments = css_parser(code)
+  }
 
-var parsed = esprima.parse(code, { loc: true, comment: true })
+  return comments && marked.lexer(comments)
+}
 
-var comments = parsed.comments.map(function (comment) {
-  return comment.value.replace(/\s*\*\n?/g, '\n')
-}).join('\n\n')
+ast.toHTML = function(file) {
+  var tokens = ast(file)
+  return marked.parser(tokens)
+}
 
-//console.log(comments)
-
-var md_tokens = marked.lexer(comments)
-//console.log(md_tokens)
-var md_ast = marked.parser(md_tokens)
-
-//console.log(md_ast)
+module.exports = ast

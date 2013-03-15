@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+var mb = require('../')
+var util = require('util')
+util.puts(util.inspect(mb(process.argv[2]), false, Infinity))
